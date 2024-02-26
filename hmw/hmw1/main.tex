@@ -4,6 +4,8 @@
 \usepackage{amsmath}
 \usepackage{xcolor}
 
+
+
 \begin{document}
 
 \title{Respuestas en LaTeX}
@@ -12,65 +14,53 @@
 
 \maketitle
 
+\input{cover.tex}
+
+
 \section*{Respuestas}
 
 \begin{enumerate}
-    \item \textcolor{blue}{Expresar -31 y +31 en 8 bits en el sistema de complemento a 1:}
+    \item Expresar -31 y +31 en 8 bits en el sistema de complemento a 1:
     \begin{itemize}
-        \item \textcolor{red}{+31 en binario: \(0001\ 1111\)}
-        \item \textcolor{red}{-31 en complemento a 1: \(1110\ 0000\)}
+        \item +31 en binario: \textit{0001 1111}
+        \item Para obtener -31 en complemento a 1, invertimos todos los bits de +31, resultando en \textit{1110 0000}.
     \end{itemize}
     
-    \item \textcolor{blue}{Expresar +13 y -13 en 8 bits en el sistema de complemento a 2:}
+    \item Expresar +13 y -13 en 8 bits en el sistema de complemento a 2:
     \begin{itemize}
-        \item \textcolor{red}{+13 en binario: \(0000\ 1101\)}
-        \item \textcolor{red}{-13 en complemento a 2: \(1111\ 0011\)}
+        \item +13 en binario: \textit{0000 1101}
+        \item Para obtener -13 en complemento a 2, primero invertimos todos los bits de +13 para obtener \textit{1111 0010} y luego sumamos 1, resultando en \textit{1111 0011}.
     \end{itemize}
     
-    \item \textcolor{blue}{Rango de números representables en complemento a dos con 4 bits:} \textcolor{red}{\(-8\) a \(+7\)}.
+    \item Rango de números representables en complemento a dos con 4 bits: \textit{-8 a +7}.
     
-    \item \textcolor{blue}{El número \((10110101)_2\) en base decimal:} \textcolor{red}{\(-75\)}.
+    \item El número \((10110101)_2\) en base decimal: Para convertir a decimal, consideramos el primer bit como el signo (1 indica negativo en complemento a 2), invertimos los bits para obtener \(01001010\), sumamos 1 para recuperar el valor absoluto, \(01001011\), que es 75 en decimal. Por lo tanto, el número es \textit{-75}.
     
-    \item \textcolor{blue}{El número \((00110111)_2\) en base decimal:} \textcolor{red}{\(55\)}.
+    \item El número \((00110111)_2\) en base decimal: Para convertir directamente a decimal, calculamos \(2^5 + 2^4 + 2^2 + 2^1 + 2^0 = 55\). \textit{55}.
     
-    \item \textcolor{blue}{Cuatro unidades funcionales principales de una computadora:}
+    \item Cuatro unidades funcionales principales de una computadora:
     \begin{enumerate}
-        \item \textcolor{red}{Unidad de Control (UC): Dirige el funcionamiento de la CPU.}
-        \item \textcolor{red}{Unidad Aritmético-Lógica (ALU): Realiza operaciones aritméticas y lógicas.}
-        \item \textcolor{red}{Memoria: Almacena datos e instrucciones.}
-        \item \textcolor{red}{Dispositivos de Entrada/Salida: Comunicación con el exterior.}
+        \item Unidad de Control (UC): Dirige el funcionamiento de la CPU.
+        \item Unidad Aritmético-Lógica (ALU): Realiza operaciones aritméticas y lógicas.
+        \item Memoria: Almacena datos e instrucciones.
+        \item Dispositivos de Entrada/Salida: Comunicación con el exterior.
     \end{enumerate}
     
-    \item \textcolor{blue}{Operación \(-3 - 6\) en binario con 4 bits:} \textcolor{red}{\(1001\) (representa \(-7\) en complemento a 2 debido a desbordamiento).}
+    \item Operación \(-3 - 6\) en binario con 4 bits: \(-3\) es \(1101\) y \(-6\) es \(1010\) en complemento a 2. La suma resulta en \(1001\), que representa \textit{-7} debido a desbordamiento.
     
-    \item \textcolor{blue}{Operación \(9 + 3\) en binario con 4 bits:} \textcolor{red}{\(1100\) (representa \(12\) en decimal).}
+    \item Operación \(9 + 3\) en binario con 4 bits: \(9\) es \(1001\) y \(3\) es \(0011\) en binario. La suma resulta en \(1100\), que representa \textit{12} en decimal.
     
-    \item \textcolor{blue}{Suma de 2 bits \(01 + 11 = 100\), con desbordamiento, el resultado sería \(00\) con un bit de acarreo (\(1\)).}
+    \item Suma de 2 bits \(01 + 11 = 100\), con desbordamiento, el resultado sería \(00\) con un bit de acarreo (\(1\)).
     
-    \item \textcolor{blue}{Suma los siguientes dos números \((10011011)_2 + (11101100)_2\). Explica qué sucede con el acarreo.}
-    \begin{itemize}
-        \item \textcolor{red}{La suma es \(110000111\), el acarreo ocurre en el bit más significativo, indicando un desbordamiento para representaciones de 8 bits.}
-    \end{itemize}
+    \item Suma los siguientes dos números \((10011011)_2 + (11101100)_2\). Explica qué sucede con el acarreo. La suma es \(110000111\). El acarreo en el bit más significativo indica un desbordamiento para representaciones de 8 bits, mostrando que el resultado excede el rango representable en 8 bits.
     
-    \item \textcolor{blue}{Representa el número 39,1 en base 2 usando el estándar IEEE 754.}
-    \begin{itemize}
-        \item \textcolor{red}{La representación es complicada para incluir directamente aquí debido a la necesidad de convertir la parte fraccionaria a binario y ajustarla al formato de punto flotante IEEE 754. Se sugiere un proceso paso a paso para la conversión.}
-    \end{itemize}
+    \item Representa el número 39,1 en base 2 usando el estándar IEEE 754. Para representar 39,1 en IEEE 754, convertimos primero la parte entera a binario, que es \(100111\), y luego la parte fraccionaria. La parte fraccionaria se convierte multiplicando sucesivamente por 2 y tomando la parte entera del resultado hasta obtener un patrón repetitivo o cero. Este proceso se ajusta al formato de punto flotante IEEE 754, considerando el signo, el exponente ajustado y la mantisa.
     
-    \item \textcolor{blue}{Representa el número 576,65 en base 2 usando el estándar IEEE 754.}
-    \begin{itemize}
-        \item \textcolor{red}{Similar al anterior, este número requiere una conversión detallada y el ajuste al formato de punto flotante.}
-    \end{itemize}
+    \item Representa el número 576,65 en base 2 usando el estándar IEEE 754. Similar al procedimiento anterior, convertimos la parte entera \(576\) a binario y seguimos un proceso para convertir la parte fraccionaria \(0,65\) a binario. Luego, ajustamos el número al formato IEEE 754.
     
-    \item \textcolor{blue}{¿Qué ventajas y desventajas puedes encontrar en el modelo de la arquitectura de Von Neumann?}
-    \begin{itemize}
-        \item \textcolor{red}{Ventajas: Simplicidad en diseño e implementación. Desventajas: El cuello de botella del bus de datos debido a la arquitectura de programa almacenado.}
-    \end{itemize}
+    \item ¿Qué ventajas y desventajas puedes encontrar en el modelo de la arquitectura de Von Neumann? Ventajas: Simplicidad en diseño e implementación. Desventajas: El cuello de botella del bus de datos debido a la arquitectura de programa almacenado.
     
-    \item \textcolor{blue}{La Arquitectura Von Neumann fue descrita por el matemático y físico John von Neumann y otros, en el primer borrador de un informe sobre el EDVAC. ¿Qué cambios aprecias hoy en día en tu computador que no se ven descritos por el diagrama dado en 1945?}
-    \begin{itemize}
-        \item \textcolor{red}{Hoy en día, las computadoras incluyen múltiples núcleos de CPU, gráficos integrados, y arquitecturas de memoria avanzadas que van más allá de la simplicidad del modelo original de Von Neumann.}
-    \end{itemize}
+    \item La Arquitectura Von Neumann fue descrita por el matemático y físico John von Neumann y otros, en el primer borrador de un informe sobre el EDVAC. ¿Qué cambios aprecias hoy en día en tu computador que no se ven descritos por el diagrama dado en 1945? Hoy en día, las computadoras incluyen múltiples núcleos de CPU, gráficos integrados, y arquitecturas de memoria avanzadas que van más allá de la simplicidad del modelo original de Von Neumann.
 \end{enumerate}
 
 \end{document}
