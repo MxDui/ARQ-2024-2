@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{xcolor}
+
+\begin{document}
+
+\title{Respuestas en LaTeX}
+\author{}
+\date{}
+
+\maketitle
+
+\section*{Respuestas}
+
+\begin{enumerate}
+    \item \textcolor{blue}{Expresar -31 y +31 en 8 bits en el sistema de complemento a 1:}
+    \begin{itemize}
+        \item \textcolor{red}{+31 en binario: \(0001\ 1111\)}
+        \item \textcolor{red}{-31 en complemento a 1: \(1110\ 0000\)}
+    \end{itemize}
+    
+    \item \textcolor{blue}{Expresar +13 y -13 en 8 bits en el sistema de complemento a 2:}
+    \begin{itemize}
+        \item \textcolor{red}{+13 en binario: \(0000\ 1101\)}
+        \item \textcolor{red}{-13 en complemento a 2: \(1111\ 0011\)}
+    \end{itemize}
+    
+    \item \textcolor{blue}{Rango de números representables en complemento a dos con 4 bits:} \textcolor{red}{\(-8\) a \(+7\)}.
+    
+    \item \textcolor{blue}{El número \((10110101)_2\) en base decimal:} \textcolor{red}{\(-75\)}.
+    
+    \item \textcolor{blue}{El número \((00110111)_2\) en base decimal:} \textcolor{red}{\(55\)}.
+    
+    \item \textcolor{blue}{Cuatro unidades funcionales principales de una computadora:}
+    \begin{enumerate}
+        \item \textcolor{red}{Unidad de Control (UC): Dirige el funcionamiento de la CPU.}
+        \item \textcolor{red}{Unidad Aritmético-Lógica (ALU): Realiza operaciones aritméticas y lógicas.}
+        \item \textcolor{red}{Memoria: Almacena datos e instrucciones.}
+        \item \textcolor{red}{Dispositivos de Entrada/Salida: Comunicación con el exterior.}
+    \end{enumerate}
+    
+    \item \textcolor{blue}{Operación \(-3 - 6\) en binario con 4 bits:} \textcolor{red}{\(1001\) (representa \(-7\) en complemento a 2 debido a desbordamiento).}
+    
+    \item \textcolor{blue}{Operación \(9 + 3\) en binario con 4 bits:} \textcolor{red}{\(1100\) (representa \(12\) en decimal).}
+    
+    \item \textcolor{blue}{Suma de 2 bits \(01 + 11 = 100\), con desbordamiento, el resultado sería \(00\) con un bit de acarreo (\(1\)).}
+    
+    \item \textcolor{blue}{Suma los siguientes dos números \((10011011)_2 + (11101100)_2\). Explica qué sucede con el acarreo.}
+    \begin{itemize}
+        \item \textcolor{red}{La suma es \(110000111\), el acarreo ocurre en el bit más significativo, indicando un desbordamiento para representaciones de 8 bits.}
+    \end{itemize}
+    
+    \item \textcolor{blue}{Representa el número 39,1 en base 2 usando el estándar IEEE 754.}
+    \begin{itemize}
+        \item \textcolor{red}{La representación es complicada para incluir directamente aquí debido a la necesidad de convertir la parte fraccionaria a binario y ajustarla al formato de punto flotante IEEE 754. Se sugiere un proceso paso a paso para la conversión.}
+    \end{itemize}
+    
+    \item \textcolor{blue}{Representa el número 576,65 en base 2 usando el estándar IEEE 754.}
+    \begin{itemize}
+        \item \textcolor{red}{Similar al anterior, este número requiere una conversión detallada y el ajuste al formato de punto flotante.}
+    \end{itemize}
+    
+    \item \textcolor{blue}{¿Qué ventajas y desventajas puedes encontrar en el modelo de la arquitectura de Von Neumann?}
+    \begin{itemize}
+        \item \textcolor{red}{Ventajas: Simplicidad en diseño e implementación. Desventajas: El cuello de botella del bus de datos debido a la arquitectura de programa almacenado.}
+    \end{itemize}
+    
+    \item \textcolor{blue}{La Arquitectura Von Neumann fue descrita por el matemático y físico John von Neumann y otros, en el primer borrador de un informe sobre el EDVAC. ¿Qué cambios aprecias hoy en día en tu computador que no se ven descritos por el diagrama dado en 1945?}
+    \begin{itemize}
+        \item \textcolor{red}{Hoy en día, las computadoras incluyen múltiples núcleos de CPU, gráficos integrados, y arquitecturas de memoria avanzadas que van más allá de la simplicidad del modelo original de Von Neumann.}
+    \end{itemize}
+\end{enumerate}
+
+\end{document}
