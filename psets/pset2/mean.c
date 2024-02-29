@@ -1,11 +1,11 @@
 #include <math.h>
 
 /**
- * Calculates the arithmetic mean of an array of floating-point numbers.
+ * Calcula la media aritmética de un array de números de punto flotante.
  * 
- * @param datos The array of floating-point numbers.
- * @param n The number of elements in the array.
- * @return The arithmetic mean of the array.
+ * @param datos El array de números de punto flotante.
+ * @param n El número de elementos en el array.
+ * @return La media aritmética del array.
  */
 float media_aritmetica(float datos[], int n) {
     float sum = 0;
@@ -16,30 +16,36 @@ float media_aritmetica(float datos[], int n) {
 }
 
 /**
- * Calculates the harmonic mean of an array of floating-point numbers.
+ * Calcula la media armónica de un array de números de punto flotante.
  * 
- * @param datos The array of floating-point numbers.
- * @param n The number of elements in the array.
- * @return The harmonic mean of the array.
+ * @param datos El array de números de punto flotante.
+ * @param n El número de elementos en el array.
+ * @return La media armónica del array si no hay valores de cero, -1 si hay.
  */
 float media_armonica(float datos[], int n) {
     float sum = 0;
     for (int i = 0; i < n; i++) {
+        if (datos[i] == 0) {
+            return -1; 
+        }
         sum += 1 / datos[i];
     }
     return n / sum;
 }
 
 /**
- * Calculates the geometric mean of an array of floating-point numbers.
+ * Calcula la media geométrica de un array de números de punto flotante.
  * 
- * @param datos The array of floating-point numbers.
- * @param n The number of elements in the array.
- * @return The geometric mean of the array.
+ * @param datos El array de números de punto flotante.
+ * @param n El número de elementos en el array.
+ * @return La media geométrica del array si no hay valores negativos, -1 si hay.
  */
 float media_geometrica(float datos[], int n) {
     float product = 1;
     for (int i = 0; i < n; i++) {
+        if (datos[i] < 0) {
+            return -1; 
+        }
         product *= datos[i];
     }
     return pow(product, 1.0 / n);

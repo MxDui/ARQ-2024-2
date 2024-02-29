@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <mean.h>   
 #include <stdlib.h>
+#include "mean.h" 
 
 int main(int argc, char *argv[]) {
     
@@ -10,25 +10,36 @@ int main(int argc, char *argv[]) {
     }
 
     int n = argc - 2;
-
     float datos[n];
 
     for (int i = 0; i < n; i++) {
         datos[i] = atof(argv[i + 2]);
     }
 
+    float result;
     switch (argv[1][0]) {
         case 'A':
-            printf("La media aritmética es: %f\n", media_aritmetica(datos, n));
+            result = media_aritmetica(datos, n);
+            printf("La media aritmética es: %f\n", result);
             break;
         case 'H':
-            printf("La media armónica es: %f\n", media_armonica(datos, n));
+            result = media_armonica(datos, n);
+            if (result == -1) {
+                printf("Error: La media armónica es indefinida debido a un valor de cero.\n");
+            } else {
+                printf("La media armónica es: %f\n", result);
+            }
             break;
         case 'G':
-            printf("La media geométrica es: %f\n", media_geometrica(datos, n));
+            result = media_geometrica(datos, n);
+            if (result == -1) {
+                printf("Error: La media geométrica es indefinida debido a un valor negativo.\n");
+            } else {
+                printf("La media geométrica es: %f\n", result);
+            }
             break;
         default:
-            printf("Opción no válida\n");
+            printf("Operación no reconocida: %s\n", argv[1]);
             return 1;
     }
 
