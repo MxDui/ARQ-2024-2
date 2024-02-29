@@ -1,11 +1,3 @@
-# How to Compile and Run the Program
-
-To compile the program, follow these steps:
-
-1. Open a terminal.
-2. Navigate to the directory where the program files are located.
-3. Run the following command:
-
 # Cómo compilar y ejecutar el programa
 
 Para compilar el programa, sigue estos pasos:
