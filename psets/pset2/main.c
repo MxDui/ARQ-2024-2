@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "mean.h" 
+#include "mean.h"
 
 int main(int argc, char *argv[]) {
     
@@ -11,9 +11,15 @@ int main(int argc, char *argv[]) {
 
     int n = argc - 2;
     float datos[n];
+    char* finalPtr;
 
     for (int i = 0; i < n; i++) {
-        datos[i] = atof(argv[i + 2]);
+        datos[i] = strtod(argv[i + 2], &finalPtr);
+
+        if (*finalPtr != '\0' || finalPtr == argv[i + 2]) {
+            printf("Error: '%s' no es un número válido.\n", argv[i + 2]);
+            return 1;
+        }
     }
 
     float result;

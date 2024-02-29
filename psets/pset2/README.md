@@ -7,7 +7,7 @@ Para compilar el programa, sigue estos pasos:
 3. Ejecuta el siguiente comando:
 
 ```bash
-gcc -I "./" -o medias main.c ./mean.c -lm
+gcc -g -I "./" -o medias main.c ./mean.c -lm
 ```
 
 Para ejecutar el programa, sigue estos pasos:
