@@ -3,64 +3,249 @@
 \usepackage[spanish]{babel}
 \usepackage{amsmath}
 \usepackage{xcolor}
+\usepackage{graphicx}
+
+\graphicspath{{./}}
 
 
 
 \begin{document}
 
-\title{Respuestas en LaTeX}
-\author{}
-\date{}
 
-\maketitle
 
 \input{cover.tex}
 
+\newpage
+\title{Tarea 1}
+\author{David Rivera Morales, Christian Eulogio Sánchez}
+\date{\today}
 
+\maketitle
 \section*{Respuestas}
 
+
+\section*{Pregunta 1}
+Expresar -31 y +31 en 8 bits en el sistema de complemento a 1.
+
+\subsection*{Respuesta}
+Para el número +31 en 8 bits:
+
+\[
++31 = 00011111_{2}
+\]
+
+Para el número -31 en 8 bits usando el sistema de complemento a 1:
+
+\[
+-31 = 11100000_{2}
+\]
+
+\section*{Pregunta 2}
+
+\subsection*{Respuesta}
+Para +13:
+\begin{align*}
+\text{Valor decimal} & : +13 \\
+\text{Binario} & : 1101 \\
+\text{Completar 8 bits} & : 00001101 \\
+\end{align*}
+
+Para -13:
+\begin{align*}
+\text{Valor decimal} & : -13 \\
+\text{Binario} & : 1101 \\
+\text{Completar 8 bits} & : 00001101 \\
+\text{Complemento a 1} & : 11110010 \\
+\text{Sumar 1} & : 11110010 + 1 = 11110011 \\
+\end{align*}
+
+\section*{Pregunta 3}
+¿Cuál es el rango de números representables en complemento a dos con 4 bits?
+
+\subsection*{Respuesta}
+El rango de números representables en complemento a dos con 4 bits es:
+\begin{itemize}
+\item Número negativo más pequeño: -8 \quad (\text{equivalente binario}: 1000_2)
+\item Número positivo más grande: +7 \quad (\text{equivalente binario}: 0111_2)
+\end{itemize}
+
+Por lo tanto, el rango total es de -8 a +7.
+
+\section*{Pregunta 4}
+El número \((10110101)_2\) es un número de 8 bits incluyendo el bit de signo en complemento a 2.
+Da su equivalente en base decimal.
+
+\subsection*{Respuesta}
+El equivalente en base decimal es -75.
+
+\section*{Pregunta 5}
+El número \((00110111)_2\) es un número de 8 bits incluyendo el bit de signo en complemento a 2.
+Da su equivalente en base decimal.
+
+\subsection*{Respuesta}
+El equivalente en base decimal es 55.
+
+\section*{Pregunta 6}
+Menciona las cuatro unidades funcionales principales de una computadora y describe su funcionamiento.
+
+\subsection*{Respuesta}
+Las cuatro unidades funcionales principales de una computadora son:
+
 \begin{enumerate}
-    \item Expresar -31 y +31 en 8 bits en el sistema de complemento a 1:
-    \begin{itemize}
-        \item +31 en binario: \textit{0001 1111}
-        \item Para obtener -31 en complemento a 1, invertimos todos los bits de +31, resultando en \textit{1110 0000}.
-    \end{itemize}
+    \item \textbf{Unidad de Procesamiento Central (CPU)}: Es el "cerebro" de la computadora, donde se realizan los cálculos y se maneja la lógica.Incluye la Unidad de Control (CU) que gestiona el flujo de datos y la Unidad de Aritmética y Lógica (ALU) que ejecuta operaciones matemáticas y lógicas.
     
-    \item Expresar +13 y -13 en 8 bits en el sistema de complemento a 2:
-    \begin{itemize}
-        \item +13 en binario: \textit{0000 1101}
-        \item Para obtener -13 en complemento a 2, primero invertimos todos los bits de +13 para obtener \textit{1111 0010} y luego sumamos 1, resultando en \textit{1111 0011}.
-    \end{itemize}
+    \item \textbf{Unidad de Memoria}: Almacena temporalmente los datos y las instrucciones que la CPU necesita durante la ejecución de los programas. La memoria principal o RAM es volátil y proporciona un acceso rápido para la CPU.
     
-    \item Rango de números representables en complemento a dos con 4 bits: \textit{-8 a +7}.
+    \item \textbf{Unidad de Entrada}: Compuesta por dispositivos como el teclado, el ratón y el escáner, esta unidad permite al usuario ingresar datos e instrucciones a la computadora.
     
-    \item El número \((10110101)_2\) en base decimal: Para convertir a decimal, consideramos el primer bit como el signo (1 indica negativo en complemento a 2), invertimos los bits para obtener \(01001010\), sumamos 1 para recuperar el valor absoluto, \(01001011\), que es 75 en decimal. Por lo tanto, el número es \textit{-75}.
-    
-    \item El número \((00110111)_2\) en base decimal: Para convertir directamente a decimal, calculamos \(2^5 + 2^4 + 2^2 + 2^1 + 2^0 = 55\). \textit{55}.
-    
-    \item Cuatro unidades funcionales principales de una computadora:
-    \begin{enumerate}
-        \item Unidad de Control (UC): Dirige el funcionamiento de la CPU.
-        \item Unidad Aritmético-Lógica (ALU): Realiza operaciones aritméticas y lógicas.
-        \item Memoria: Almacena datos e instrucciones.
-        \item Dispositivos de Entrada/Salida: Comunicación con el exterior.
-    \end{enumerate}
-    
-    \item Operación \(-3 - 6\) en binario con 4 bits: \(-3\) es \(1101\) y \(-6\) es \(1010\) en complemento a 2. La suma resulta en \(1001\), que representa \textit{-7} debido a desbordamiento.
-    
-    \item Operación \(9 + 3\) en binario con 4 bits: \(9\) es \(1001\) y \(3\) es \(0011\) en binario. La suma resulta en \(1100\), que representa \textit{12} en decimal.
-    
-    \item Suma de 2 bits \(01 + 11 = 100\), con desbordamiento, el resultado sería \(00\) con un bit de acarreo (\(1\)).
-    
-    \item Suma los siguientes dos números \((10011011)_2 + (11101100)_2\). Explica qué sucede con el acarreo. La suma es \(110000111\). El acarreo en el bit más significativo indica un desbordamiento para representaciones de 8 bits, mostrando que el resultado excede el rango representable en 8 bits.
-    
-    \item Representa el número 39,1 en base 2 usando el estándar IEEE 754. Para representar 39,1 en IEEE 754, convertimos primero la parte entera a binario, que es \(100111\), y luego la parte fraccionaria. La parte fraccionaria se convierte multiplicando sucesivamente por 2 y tomando la parte entera del resultado hasta obtener un patrón repetitivo o cero. Este proceso se ajusta al formato de punto flotante IEEE 754, considerando el signo, el exponente ajustado y la mantisa.
-    
-    \item Representa el número 576,65 en base 2 usando el estándar IEEE 754. Similar al procedimiento anterior, convertimos la parte entera \(576\) a binario y seguimos un proceso para convertir la parte fraccionaria \(0,65\) a binario. Luego, ajustamos el número al formato IEEE 754.
-    
-    \item ¿Qué ventajas y desventajas puedes encontrar en el modelo de la arquitectura de Von Neumann? Ventajas: Simplicidad en diseño e implementación. Desventajas: El cuello de botella del bus de datos debido a la arquitectura de programa almacenado.
-    
-    \item La Arquitectura Von Neumann fue descrita por el matemático y físico John von Neumann y otros, en el primer borrador de un informe sobre el EDVAC. ¿Qué cambios aprecias hoy en día en tu computador que no se ven descritos por el diagrama dado en 1945? Hoy en día, las computadoras incluyen múltiples núcleos de CPU, gráficos integrados, y arquitecturas de memoria avanzadas que van más allá de la simplicidad del modelo original de Von Neumann.
+    \item \textbf{Unidad de Salida}: Incluye dispositivos como monitores e impresoras que la computadora usa para comunicar los resultados de sus operaciones al usuario.
 \end{enumerate}
+
+
+
+\section*{Pregunta 7}
+
+Realiza la siguiente operación \(-3 - 6\) de base decimal en base binario representando los
+números en 4 bits.
+
+\subsection*{Respuesta}
+\begin{align*}
+  &\phantom{-}3 \\
+  &+6 \\
+  \cline{1-2}
+  &1001_2
+\end{align*}
+
+\section*{Pregunta 8}
+Realiza la siguiente operación \(9 + 3\) de base decimal en base binaria representando los números en 4 bits.
+\subsection*{Respuesta}
+\begin{align*}
+  &\phantom{+}9 \\
+  &+3 \\
+  \cline{1-2}
+  &1100_2
+\end{align*}
+
+
+
+\section*{Pregunta 9}
+Realiza la siguiente suma de 2 bits.
+\subsection*{Respuesta}
+\begin{align*}
+\begin{tabular}{ccc|c|c}
+\hline
+\multicolumn{1}{|c|}{A} & + & B & Acarreo & Suma \\ \hline
+\multicolumn{1}{|c|}{0} & + & 0 & 0       & 0    \\ \hline
+\multicolumn{1}{|c|}{0} & + & 1 & 0       & 1    \\ \hline
+\multicolumn{1}{|c|}{1} & + & 0 & 0       & 1    \\ \hline
+\multicolumn{1}{|c|}{1} & + & 1 & 1       & 0    \\ \hline
+\end{tabular}
+\end{align*}
+
+
+\section*{Pregunta 10}
+
+Suma los siguientes dos números $(10011011)_2$ y $(11101100)_2$. Explica qué sucede con el acarreo.
+
+\subsection*{Respuesta}
+
+La suma de dos números binarios se realiza de derecha a izquierda, al igual que en la suma decimal. Cuando la suma de dos bits es 2 (10 en binario), se produce un acarreo.
+
+Consideremos la suma de los números binarios $(10011011)_2$ y $(11101100)_2$:
+
+\begin{align*}
+  &\phantom{+}10011011 \\
+  &+11101100 \\
+  \cline{1-2}
+  &110000111
+\end{align*}
+
+Vamos a desglosar el proceso:
+
+\begin{itemize}
+  \item Empezamos desde la derecha. La suma de los primeros bits es 1 + 0 = 1.
+  \item En la segunda posición, la suma es 1 + 0 = 1.
+  \item En la tercera posición, la suma es 0 + 1 = 1.
+  \item En la cuarta posición, la suma es 1 + 1. Esto es igual a 2, que se representa como 10 en binario. Por lo tanto, escribimos 0 y llevamos 1 al siguiente bit.
+  \item En la quinta posición, la suma es 0 (del bit) + 1 (del acarreo) + 0 (del siguiente bit) = 1.
+  \item Continuamos este proceso hasta el final.
+\end{itemize}
+
+Por lo tanto, el acarreo comienza en la cuarta posición desde la derecha.
+
+
+
+
+\section*{Pregunta 12}
+
+Representa el número 576.65 en base 2 usando el estándar IEEE 754.
+
+\subsection*{Respuesta}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{20240229_20h49m03s_grim.png}
+    \caption{Simple precisión (32 bits):}
+    \label{fig:enter-label1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{20240229_20h49m13s_grim.png}
+    \caption{Doble precisión (64 bits):}
+    \label{fig:enter-label2}
+\end{figure}
+
+\section*{Pregunta 14}
+
+La Arquitectura Von Neumann fue descrita por el matemático y físico John von Neumann y otros, en el primer borrador de un informe sobre el EDVAC. Pero la computación de 1945 a la actualidad ha dado pasos agigantados, aumentando la complejidad de la arquitectura inicial, la base de su funcionamiento es la misma. ¿Qué cambios aprecias hoy en día en tu computador que no se ven descritos por el diagrama dado en 1945? Argumenta tu respuesta.
+
+\subsection*{Respuesta}
+
+Resumen de los cambios en la arquitectura Von Neumann desde 1945:
+
+\textbf{Memoria:}
+
+\begin{itemize}
+  \item Capacidad: Aumento exponencial (de KB a GB/TB).
+  \item Velocidad: Acceso más rápido a datos.
+  \item Jerarquía: Niveles de memoria (caché, RAM, disco duro) para optimizar rendimiento.
+\end{itemize}
+
+\textbf{Procesador:}
+
+\begin{itemize}
+  \item Velocidad: Aumento considerable (de MHz a GHz).
+  \item Paralelismo: Múltiples núcleos y unidades de procesamiento.
+  \item Especialización: Procesadores para tareas específicas (gráficos, aprendizaje automático).
+\end{itemize}
+
+\textbf{E/S:}
+
+\begin{itemize}
+  \item Dispositivos: Mayor variedad (teclados, ratones, pantallas, impresoras).
+  \item Velocidad: Mayor velocidad de transferencia de datos (redes de alta velocidad).
+\end{itemize}
+
+\textbf{Software:}
+
+\begin{itemize}
+  \item Sistemas operativos: Más complejos, mayor seguridad, estabilidad y facilidad de uso.
+  \item Aplicaciones: Crecimiento exponencial (de programas de cálculo a juegos complejos e interfaces multimedia).
+\end{itemize}
+
+\textbf{Conclusión:}
+
+La arquitectura Von Neumann ha evolucionado considerablemente desde 1945, adaptándose a las necesidades de la computación moderna. Aunque el diagrama original no describe estos cambios, la base fundamental de la arquitectura se mantiene intacta.
+
+\section*{Pregunta 15}
+En la siguiente imagen, se nos muestra la disyuncion y la conjuncion proposicional usando interruptores. Usando ese mismo modelo, como seria un xor usando interruptores?
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{1641d493-e39b-4626-b583-42ef2d0b38d2.jpeg}
+    \caption{xor ejemplo}
+    \label{fig:enter-label}
+\end{figure}
 
 \end{document}
