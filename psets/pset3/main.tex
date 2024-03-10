@@ -5,13 +5,13 @@
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{tikz}
-\usetikzlibrary{matrix}
+\usepackage[table]{xcolor}
 
 \graphicspath{{../../utils/}}
 
 \begin{document}
 
-\input{../../utils/cover.tex}
+\input{./cover.tex}
 
 
 \section*{Desarrolla un circuito que simule el comportamiento de la tabla de verdad del Si y solo si P ⇐⇒ Q. Para este ejercicio solo puedes usar compuertas, como AND, OR, NAND, ect.}
@@ -44,6 +44,143 @@ P' & 0 & 1 \\ \cline{2-3}
 \label{tab:kmap_biconditional}
 \end{table}
 
+ \section{Sean \(x, y \in \{0, 1, 2, 3\}\), desarrolla un comparador electrónico de 2 bits. Las salidas del comparador deben ser: \(x \geq y\). Para este ejercicio solo puedes usar compuertas, como AND, NOR, XOR, etc.}
+    
+    \centering
+    \caption{Tabla de Verdad: $x\geq y$}
+    
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $x_0$ & $x_1$ & $y_0$ & $y_1$ & $x\geq y$ \\
+        \hline
+        0 & 0 & 0 & 0 & \textcolor{red}{1} \\
+        \hline
+        0 & 0 & 0 & 1 & 0 \\
+        \hline
+        0 & 0 & 1 & 0 & 0 \\
+        \hline
+        0 & 0 & 1 & 1 & 0 \\
+        \hline
+        0 & 1 & 0 & 0 & \textcolor{red}{1} \\
+        \hline
+        0 & 1 & 0 & 1 & \textcolor{red}{1} \\
+        \hline
+        0 & 1 & 1 & 0 & 0 \\
+        \hline
+        0 & 1 & 1 & 1 & 0 \\
+        \hline
+        1 & 0 & 0 & 0 & \textcolor{red}{1} \\
+        \hline
+        1 & 0 & 0 & 1 & \textcolor{red}{1} \\
+        \hline
+        1 & 0 & 1 & 0 & \textcolor{red}{1} \\
+        \hline
+        1 & 0 & 1 & 1 & 0 \\
+        \hline
+        1 & 1 & 0 & 0 & \textcolor{red}{1} \\
+        \hline
+        1 & 1 & 0 & 1 & \textcolor{red}{1} \\
+        \hline
+        1 & 1 & 1 & 0 & \textcolor{red}{1}\\
+        \hline
+        1 & 1 & 1 & 1 & \textcolor{red}{1} \\
+        \hline
+    \end{tabular}
+    \label{tab:mi_tabla}
+    \ \\
+     Ahora, sabiendo en que casos el resultado es 1, podemos hacer el mapa de Karnaugh para asi poder reducir la expresion
+
+    \centering
+    \caption{Mapas de Karnaugh} 
+    
+    \centering
+    \caption{\textcolor{red}{$\overline{y_0}$ $\overline{y_1}$}=} 
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $x_0,x_1 / y_0,y_1$ & 00 & 01 & 11 & 10 \\
+        \hline
+        00 & \textcolor{red}{1} &  & &  \\
+        \hline
+        01 & \textcolor{red}{1} & 1 &  &  \\
+        \hline
+        11 & \textcolor{red}{1} & 1 & 1 & 1 \\
+        \hline
+        10 & \textcolor{red}{1} & 1 &  & 1 \\
+        \hline
+    \end{tabular}
+    \ \\
+
+    \centering
+    \caption{\textcolor{green}{$x_1$ $\overline{y_0}$}=} 
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $x_0,x_1 / y_0,y_1$ & 00 & 01 & 11 & 10 \\
+        \hline
+        00 & 1&  & &  \\
+        \hline
+        01 & \textcolor{green}{1}  & \textcolor{green}{1} &  &  \\
+        \hline
+        11 & \textcolor{green}{1} & \textcolor{green}{1} & 1 & 1 \\
+        \hline
+        10 & 1 & 1 &  & 1 \\
+        \hline
+    \end{tabular}
+    \ \\
+
+    \centering
+    \caption{\textcolor{orange}{$x_0$ $\overline{y_0}$}=} 
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $x_0,x_1 / y_0,y_1$ & 00 & 01 & 11 & 10 \\
+        \hline
+        00 & 1&  & &  \\
+        \hline
+        01 & 1 & 1&  &  \\
+        \hline
+        11 & \textcolor{orange}{1} & \textcolor{orange}{1} & 1 & 1 \\
+        \hline
+        10 & \textcolor{orange}{1} & \textcolor{orange}{1} &  & 1 \\
+        \hline
+    \end{tabular}
+    \ \\
+
+    \centering
+    \caption{\textcolor{purple}{$x_0$ $\overline{y_1}$}=} 
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $x_0,x_1 / y_0,y_1$ & 00 & 01 & 11 & 10 \\
+        \hline
+        00 & 1&  & &  \\
+        \hline
+        01 & 1 & 1&  &  \\
+        \hline
+        11 & \textcolor{purple}{1} & 1 & 1 & \textcolor{purple}{1} \\
+        \hline
+        10 & \textcolor{purple}{1} & 1 &  & \textcolor{purple}{1} \\
+        \hline
+    \end{tabular}
+    \ \\
+
+    \centering
+    \caption{\textcolor{blue}{$x_0 x_1$}= 
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $x_0,x_1 / y_0,y_1$ & 00 & 01 & 11 & 10 \\
+        \hline
+        00 & 1&  & &  \\
+        \hline
+        01 & 1 & 1&  &  \\
+        \hline
+        11 & \textcolor{blue}{1} & \textcolor{blue}{1} & \textcolor{blue}{1} & \textcolor{blue}{1} \\
+        \hline
+        10 & 1& 1 &  & 1 \\
+        \hline
+    \end{tabular}
+    \ \\
+    Por lo tanto al final nos queda la expresion:
+    \textcolor{red}{$\overline{y_0}$ $\overline{y_1}$} + \textcolor{green}{$x_1$ $\overline{y_0}$}+\textcolor{orange}{$x_0$ $\overline{y_0}$} + \textcolor{purple}{$x_0$ $\overline{y_1}$} + \textcolor{blue}{$x_0 x_1$}
+    
 
 \section*{Preguntas sobre Transistores y Circuitos}
 
