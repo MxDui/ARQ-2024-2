@@ -4,12 +4,46 @@
 \usepackage{amsmath}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
 
 \graphicspath{{../../utils/}}
 
 \begin{document}
 
 \input{../../utils/cover.tex}
+
+
+\section*{Desarrolla un circuito que simule el comportamiento de la tabla de verdad del Si y solo si P ⇐⇒ Q. Para este ejercicio solo puedes usar compuertas, como AND, OR, NAND, ect.}
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cc|c}
+\hline
+P & Q & \( P \Leftrightarrow Q \) \\
+\hline
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+1 & 1 & 1 \\
+\hline
+\end{tabular}
+\caption{Tabla de verdad del bicondicional}
+\label{tab:truth_table_biconditional}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|c}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{Q} & \multicolumn{1}{c}{Q'} \\ \cline{2-3}
+P  & 1 & 0 \\ \cline{2-3}
+P' & 0 & 1 \\ \cline{2-3}
+\end{tabular}
+\caption{Mapa de Karnaugh del bicondicional}
+\label{tab:kmap_biconditional}
+\end{table}
+
 
 \section*{Preguntas sobre Transistores y Circuitos}
 
