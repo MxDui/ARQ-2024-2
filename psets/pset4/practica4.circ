@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="2.7.1" version="1.0">
+  This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
+
+  <lib desc="#Wiring" name="0"/>
+  <lib desc="#Gates" name="1"/>
+  <lib desc="#Plexers" name="2"/>
+  <lib desc="#Arithmetic" name="3"/>
+  <lib desc="#Memory" name="4"/>
+  <lib desc="#I/O" name="5"/>
+  <lib desc="#Base" name="6">
+    <tool name="Text Tool">
+      <a name="text" val=""/>
+      <a name="font" val="SansSerif plain 12"/>
+      <a name="halign" val="center"/>
+      <a name="valign" val="base"/>
+    </tool>
+  </lib>
+  <main name="main"/>
+  <options>
+    <a name="gateUndefined" val="ignore"/>
+    <a name="simlimit" val="1000"/>
+    <a name="simrand" val="0"/>
+  </options>
+  <mappings>
+    <tool lib="6" map="Button2" name="Menu Tool"/>
+    <tool lib="6" map="Button3" name="Menu Tool"/>
+    <tool lib="6" map="Ctrl Button1" name="Menu Tool"/>
+  </mappings>
+  <toolbar>
+    <tool lib="6" name="Poke Tool"/>
+    <tool lib="6" name="Edit Tool"/>
+    <tool lib="6" name="Text Tool">
+      <a name="text" val=""/>
+      <a name="font" val="SansSerif plain 12"/>
+      <a name="halign" val="center"/>
+      <a name="valign" val="base"/>
+    </tool>
+    <sep/>
+    <tool lib="0" name="Pin">
+      <a name="tristate" val="false"/>
+    </tool>
+    <tool lib="0" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="labelloc" val="east"/>
+    </tool>
+    <tool lib="1" name="NOT Gate"/>
+    <tool lib="1" name="AND Gate"/>
+    <tool lib="1" name="OR Gate"/>
+  </toolbar>
+  <circuit name="main">
+    <a name="circuit" val="main"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+    <wire from="(300,400)" to="(360,400)"/>
+    <wire from="(440,380)" to="(500,380)"/>
+    <wire from="(360,390)" to="(410,390)"/>
+    <wire from="(410,370)" to="(410,380)"/>
+    <wire from="(360,390)" to="(360,400)"/>
+    <wire from="(300,370)" to="(410,370)"/>
+    <wire from="(380,400)" to="(380,430)"/>
+    <wire from="(380,400)" to="(410,400)"/>
+    <wire from="(300,430)" to="(380,430)"/>
+    <comp lib="0" loc="(300,370)" name="Pin"/>
+    <comp lib="0" loc="(300,400)" name="Pin"/>
+    <comp loc="(440,380)" name="SUMADOR_COMPLETO_1_BIT"/>
+    <comp lib="0" loc="(300,430)" name="Pin"/>
+  </circuit>
+  <circuit name="SUMADOR_COMPLETO_1_BIT">
+    <a name="circuit" val="SUMADOR_COMPLETO_1_BIT"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="west"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+    <wire from="(820,790)" to="(870,790)"/>
+    <wire from="(770,690)" to="(820,690)"/>
+    <wire from="(1030,850)" to="(1140,850)"/>
+    <wire from="(660,690)" to="(710,690)"/>
+    <wire from="(950,870)" to="(950,880)"/>
+    <wire from="(580,750)" to="(630,750)"/>
+    <wire from="(520,750)" to="(580,750)"/>
+    <wire from="(760,790)" to="(800,790)"/>
+    <wire from="(580,900)" to="(870,900)"/>
+    <wire from="(520,790)" to="(760,790)"/>
+    <wire from="(760,830)" to="(870,830)"/>
+    <wire from="(950,810)" to="(950,830)"/>
+    <wire from="(650,710)" to="(650,860)"/>
+    <wire from="(630,730)" to="(630,750)"/>
+    <wire from="(660,690)" to="(660,710)"/>
+    <wire from="(770,690)" to="(770,710)"/>
+    <wire from="(580,750)" to="(580,900)"/>
+    <wire from="(760,790)" to="(760,830)"/>
+    <wire from="(820,690)" to="(820,790)"/>
+    <wire from="(920,810)" to="(950,810)"/>
+    <wire from="(950,830)" to="(980,830)"/>
+    <wire from="(920,880)" to="(950,880)"/>
+    <wire from="(950,870)" to="(980,870)"/>
+    <wire from="(800,730)" to="(830,730)"/>
+    <wire from="(650,860)" to="(870,860)"/>
+    <wire from="(800,730)" to="(800,790)"/>
+    <wire from="(890,710)" to="(1090,710)"/>
+    <wire from="(520,710)" to="(650,710)"/>
+    <wire from="(630,730)" to="(710,730)"/>
+    <wire from="(820,690)" to="(830,690)"/>
+    <wire from="(650,710)" to="(660,710)"/>
+    <comp lib="1" loc="(920,810)" name="AND Gate">
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="1" loc="(1030,850)" name="OR Gate">
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="1" loc="(920,880)" name="AND Gate">
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="0" loc="(520,710)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="A"/>
+    </comp>
+    <comp lib="0" loc="(520,750)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="B"/>
+    </comp>
+    <comp lib="0" loc="(520,790)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="Carry_In"/>
+    </comp>
+    <comp lib="1" loc="(890,710)" name="XOR Gate">
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="1" loc="(770,710)" name="XOR Gate">
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="0" loc="(1140,850)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="Carry_Out"/>
+    </comp>
+    <comp lib="0" loc="(1090,710)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="Sum"/>
+    </comp>
+  </circuit>
+</project>
