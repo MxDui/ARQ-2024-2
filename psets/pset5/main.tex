@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\begin{document}
+
+\section*{Respuestas}
+
+\begin{enumerate}
+    \item Los diferentes tipos de flip-flops son:
+    \begin{itemize}
+        \item SR (Set-Reset): Controlado por entradas Set y Reset.
+        \item D (Data): Transfiere el estado de la entrada de datos a la salida en el flanco del reloj.
+        \item T (Toggle): Cambia de estado en cada pulso de reloj si la entrada está en alto.
+        \item JK: Similar al SR pero evita la condición indeseada cuando ambas entradas son altas.
+    \end{itemize}
+    
+    \item La elección del tipo de flip-flop depende de la función específica requerida, la simplicidad del diseño y la eliminación de condiciones indeseables.
+    
+    \item Para la representación de flip-flops SR y JK usando compuertas lógicas básicas, se detallarán los circuitos respectivos.
+    
+    \item Existen dos tipos de máquinas de estado finito:
+    \begin{itemize}
+        \item Mealy: La salida depende del estado actual y de las entradas.
+        \item Moore: La salida depende solo del estado actual.
+    \end{itemize}
+    
+    \item Los flip-flops de tipo JK son preferidos para realizar máquinas de estado finito debido a su versatilidad y capacidad para manejar condiciones indeseadas de manera eficiente.
+    
+    \item Un registro de desplazamiento que desplaza 1 bit a la izquierda se implementa conectando las salidas de los flip-flops a las entradas del siguiente flip-flop en la cadena. Para simular su funcionamiento en una ALU de 8 bits, se utilizaría una operación de desplazamiento hacia la izquierda.
+\end{enumerate}
+
+\end{document}
