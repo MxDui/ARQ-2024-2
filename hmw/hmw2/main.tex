@@ -1,61 +1,62 @@
-\documentclass[12pt]{article}
+\documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
-\usepackage{hyperref}
-\usepackage{natbib}
 
-\title{Respuestas sobre Arquitectura de Computadoras}
+\title{Arquitectura de Computadoras: Una Introducción}
 \author{David Rivera Morales}
+\date{\today}
 
 \begin{document}
 
 \maketitle
 
-\section*{Respuestas}
+\section{Respuestas}
+\begin{enumerate}
+    \item La Arquitectura de Computadoras no se dedica únicamente al estudio de las instrucciones de una computadora y su desempeño respecto a estas. También abarca el diseño y organización de los componentes de hardware y software de un sistema informático, así como la interacción entre ellos para lograr un funcionamiento eficiente y óptimo 
+    
+    \item Los registros son dispositivos de hardware que permiten almacenar valores en binario, pero no cualquier valor. Están diseñados para almacenar datos temporales, direcciones de memoria, resultados de operaciones, entre otros, en un formato específico que la CPU puede manipular eficientemente 
+    
+    \item La diferencia entre un AMD Ryzen 5 y un Intel Core i5 radica en su arquitectura y microarquitectura. Cada uno tiene su propio diseño de CPU, conjunto de instrucciones, y organización interna que influyen en su rendimiento y características específicas
+    
+    \item En términos generales, la arquitectura RISC (Reduced Instruction Set Computing) requiere un mayor número de instrucciones para realizar una tarea en comparación con CISC (Complex Instruction Set Computing). Esto se debe a que en RISC las instrucciones son más simples y específicas, lo que puede implicar más instrucciones para completar una tarea que en CISC, donde las instrucciones son más complejas y abarcan múltiples operaciones.
+    
+    \item Los tres factores de desempeño en computación son la velocidad de la CPU, la cantidad de instrucciones por programa y la cantidad de ciclos de reloj por instrucción. Cada uno de estos factores influye en la eficiencia y rapidez con la que un programa se ejecuta en un sistema informático 
+    
+    \item El tiempo de CPU se calcula multiplicando el número de ciclos por la duración de un ciclo. En este caso, si un programa tarda 9 millones de ciclos y cada ciclo dura 3 ns, el tiempo de CPU sería de 27 ms.
+    
+    \item Si un programa tarda 14 millones de ciclos en una máquina a 2.4 GHz, el tiempo de CPU sería de aproximadamente 5.83 ms.
+    
+    \item En una arquitectura CISC, el periodo de una señal de reloj puede ser más grande que en una arquitectura RISC debido a la complejidad de las instrucciones en CISC, que pueden requerir más ciclos de reloj para completarse 
+    
+    \item Utilizando la Ley de Moore, que establece que la cantidad de transistores en un chip se duplica aproximadamente cada dos años, se esperaría que hoy en día un CPU similar al Intel 4004 (i4004) tendría alrededor de 1.47 mil millones de transistores.
+    
+    \item Comparando con la estimación de transistores esperada según la Ley de Moore, el Intel Core i9-9900K con 3052 mil millones de transistores supera significativamente la predicción. Esto sugiere que la Ley de Moore ha sido superada en este caso, ya que la cantidad de transistores en los procesadores ha aumentado a un ritmo más rápido de lo previsto inicialmente .
+\end{enumerate}
 
-\subsection*{1. Arquitectura de Computadoras}
-La Arquitectura de Computadoras no se limita únicamente al estudio de las instrucciones de una computadora y su desempeño respecto a estas. Incluye la organización lógica del hardware, cómo interactúan sus componentes y los principios que guían el diseño de procesadores, sus unidades y métodos de funcionamiento. \citep{profesional_review_2022}.
+\section{Referencias}
+\begin{thebibliography}{9}
+\bibitem{byjus2022} 
+Admin. (2022, October 4). \textit{Types of instructions in computer architecture | GATE Notes}. BYJUS. 
+\url{https://byjus.com/gate/types-of-instructions-in-computer-architecture-notes/}
 
-\subsection*{2. Registros}
-Sí, los registros son dispositivos de hardware que permiten almacenar cualquier valor en binario. Son fundamentales para el funcionamiento de la CPU, ya que almacenan instrucciones, direcciones de memoria y datos necesarios para la ejecución de programas \citep{profesional_review_2022}.
+\bibitem{tutorialspoint} 
+\textit{Basic computer instructions in computer organization}. (n.d.). Tutorialspoint. 
+\url{https://www.tutorialspoint.com/basic-computer-instructions-in-computer-organization}
 
-\subsection*{3. Diferencia entre AMD Ryzen 5 e Intel Core i5}
-Para obtener una comparación actualizada y detallada entre AMD Ryzen 5 e Intel Core i5, se recomienda consultar especificaciones técnicas recientes, ya que ambas líneas de procesadores evolucionan constantemente.
+\bibitem{javatpoint} 
+\textit{Computer Instructions | Computer Organization and Architecture Tutorial}. (n.d.). javatpoint. 
+\url{https://www.javatpoint.com/computer-instructions}
 
-\subsection*{4. RISC vs. CISC}
-La arquitectura RISC requiere un mayor número de instrucciones para realizar una tarea en comparación con CISC. Esto se debe a su enfoque en instrucciones más simples y específicas que permiten una ejecución más rápida y eficiente en algunos casos \citep{profesional_review_risc}.
+\bibitem{geeksforgeeks2023} 
+GfG. (2023, April 21). \textit{Computer Organization Basic computer instructions}. GeeksforGeeks. 
+\url{https://www.geeksforgeeks.org/computer-organization-basic-computer-instructions/}
 
-\subsection*{5. Tres factores de desempeño}
-Los tres factores de desempeño son: la cantidad de trabajo realizado por el procesador en un tiempo determinado, el tiempo que tarda en ejecutarse un programa, y la latencia o tiempo de respuesta del sistema. Estos dependen de la arquitectura del procesador, la eficiencia del código del programa y la velocidad de los dispositivos de E/S \citep{profesional_review_2022}.
+\bibitem{kirvan2022} 
+Kirvan, P. (2022, June 15). \textit{computer instruction}. WhatIs. TechTarget. 
+\url{https://www.techtarget.com/whatis/definition/instruction}
 
-\subsection*{6. Tiempo de CPU para 9 millones de ciclos a 3 ns}
-
-\subsection*{7. Tiempo de CPU para 14 millones de ciclos a 2.4 GHz}
-
-\subsection*{8. Periodo de señal de reloj en arquitecturas CISC y RISC}
-
-\subsection*{9. Ley de Moore e Intel 4004}
-
-\subsection*{10. Intel Core i9-9900K y Ley de Moore}
-
-\bibliographystyle{apa}
-\bibliography{references}
+\end{thebibliography}
 
 \end{document}
 
-\section*{Bibliografía}
-\begin{filecontents}{references.bib}
-@misc{profesional_review_2022,
-  title={Arquitectura de computadoras: ¿Qué son? ¿Cómo funcionan?},
-  author={Profesional Review},
-  year={2022},
-  note={\url{https://www.profesionalreview.com/2022/10/01/arquitectura-de-computadoras-que-son-como-funcionan/}}
-}
-
-@misc{profesional_review_risc,
-  title={RISC: La arquitectura de procesadores usada por ARM para cambiar el mercado},
-  author={Profesional Review},
-  year={2021},
-  note={\url{https://www.profesionalreview.com/2021/07/17/risc-arquitectura-procesadores/}}
-}
-\end{filecontents}
