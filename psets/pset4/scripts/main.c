@@ -27,11 +27,11 @@ unsigned int bin_to_int(char *bin) {
  */
 unsigned int logica(unsigned int a, unsigned int b, unsigned int op) {
     switch (op) {
-        case 0: return a & b; // Operación AND
-        case 1: return a | b; // Operación OR
-        case 2: return a ^ b; // Operación XOR
-        case 3: return ~a;    // Operación NOT
-        default: return 0; // Devuelve 0 si la operación no es válida.
+        case 0: return a & b; 
+        case 1: return a | b; 
+        case 2: return a ^ b; 
+        case 3: return ~a; 
+        default: return 0; 
     }
 }
 
@@ -44,11 +44,11 @@ unsigned int logica(unsigned int a, unsigned int b, unsigned int op) {
  */
 unsigned int aritmetica(unsigned int a, unsigned int b, unsigned int op) {
     switch (op) {
-        case 0: return a + b; // Suma
-        case 1: return a - b; // Resta
-        case 2: return a * b; // Multiplicación
-        case 3: return a / b; // División
-        default: return 0; // Devuelve 0 si la operación no es válida.
+        case 0: return a + b; 
+        case 1: return a - b; 
+        case 2: return a * b; 
+        case 3: return a / b; 
+        default: return 0; 
     }
 }
 
@@ -74,15 +74,16 @@ int main(int argc, char *argv[]) {
     unsigned int operando1 = bin_to_int(op1_str); 
     unsigned int operando2 = bin_to_int(op2_str); 
 
-    unsigned int resultado; // Variable para almacenar el resultado.
+    unsigned int resultado; 
+
     // Determina si realizar una operación lógica o aritmética basada en el código de operación.
     if (operacion < 4) {
-        resultado = logica(operando1, operando2, operacion); // Realiza operación lógica.
+        resultado = logica(operando1, operando2, operacion); 
     } else {
-        resultado = aritmetica(operando1, operando2, operacion - 4); // Realiza operación aritmética.
+        resultado = aritmetica(operando1, operando2, operacion - 4); 
     }
 
-    printf("Resultado: %u\n", resultado); // Imprime el resultado.
+    printf("Resultado: %u\n", resultado); 
 
-    return 0; // Sale con el código de éxito 0.
+    return 0; 
 }
