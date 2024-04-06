@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\begin{document}
+
+\section*{1. ¿Qué es un macro-assembler? ¿Y qué es un micro-assembler?}
+\subsection*{Respuesta}
+Un \textbf{macro-assembler} es un ensamblador que permite el uso de macros, es decir, secuencias de instrucciones que pueden ser invocadas como una sola instrucción, simplificando la programación y la reutilización de código. Los macros ayudan a realizar tareas repetitivas y complejas de manera más eficiente y legible.
+
+Un \textbf{micro-assembler}, en cambio, es un tipo de ensamblador utilizado para escribir microcódigo, que es un nivel más bajo de instrucciones utilizadas para implementar las instrucciones de máquina de un procesador. Este tipo de ensamblador está más cercano al hardware y es específico del diseño del procesador.
+
+\section*{2. Menciona 5 llamadas a sistema (syscall) que puedes usar en MIPS. Menciona su código de instrucción y qué es lo que hace.}
+\subsection*{Respuesta}
+Las llamadas a sistema en MIPS se realizan mediante la instrucción \texttt{syscall}. El código de operación que debe ejecutarse se especifica en el registro \texttt{\$v0}. Aquí hay cinco ejemplos comunes:
+\begin{itemize}
+    \item \textbf{Código 1:} \texttt{\$v0 = 1}. Imprime un entero almacenado en \texttt{\$a0}.
+    \item \textbf{Código 4:} \texttt{\$v0 = 4}. Imprime la cadena de caracteres cuya dirección inicial está en \texttt{\$a0}.
+    \item \textbf{Código 5:} \texttt{\$v0 = 5}. Lee un entero desde la entrada estándar y lo retorna en \texttt{\$v0}.
+    \item \textbf{Código 8:} \texttt{\$v0 = 8}. Lee una cadena desde la entrada estándar, utilizando \texttt{\$a0} para la dirección de buffer y \texttt{\$a1} para el tamaño máximo.
+    \item \textbf{Código 10:} \texttt{\$v0 = 10}. Termina la ejecución del programa.
+\end{itemize}
+
+\section*{3. ¿Cuáles son los 3 tipos principales de instrucciones? Menciona qué comportamiento tiene cada tipo de instrucción.}
+\subsection*{Respuesta}
+En la arquitectura de computadoras, las instrucciones suelen clasificarse en tres tipos principales:
+\begin{itemize}
+    \item \textbf{Instrucciones de tipo R (Register):} Operan directamente sobre los registros del procesador. Ejemplos incluyen \texttt{add}, \texttt{sub}, y \texttt{mul}, que realizan operaciones aritméticas.
+    \item \textbf{Instrucciones de tipo I (Immediate):} Incluyen un valor inmediato como parte de la instrucción. Son útiles para operaciones como la carga de constantes o el ajuste de valores sin necesidad de una segunda instrucción. Ejemplos son \texttt{addi} o \texttt{beq}.
+    \item \textbf{Instrucciones de tipo J (Jump):} Utilizadas para saltos y llamadas a funciones. Estas instrucciones cambian el flujo de ejecución al modificar el contador de programa. Ejemplos son \texttt{j} y \texttt{jal}.
+\end{itemize}
+
+\section*{4. ¿Qué hacen las instrucciones de tipo FR y de tipo FI? Da algunos ejemplos de instrucciones de este tipo y menciona por qué están separadas de las otras 3 principales.}
+\subsection*{Respuesta}
+Las instrucciones de tipo \textbf{FR (Floating Register)} y \textbf{FI (Floating Immediate)} son específicas para operaciones con números de punto flotante. 
+\begin{itemize}
+    \item \textbf{Instrucciones FR:} Operan sobre registros de punto flotante. Ejemplos incluyen \texttt{add.s}, \texttt{mul.s}, que realizan operaciones aritméticas sobre flotantes.
+    \item \textbf{Instrucciones FI:} Son menos comunes y podrían incluir operaciones que involucren un inmediato y un registro flotante.
+\end{itemize}
+Estas instrucciones están separadas de las otras debido a que manejan tipos de datos y unidades de procesamiento distintas (unidad de punto flotante frente a unidad aritmético-lógica).
+
+\section*{5. ¿Cada arquitectura tiene su propio lenguaje ensamblador? ¿Cuáles son algunos de los desafíos de la optimización del código ensamblador para diferentes arquitecturas y plataformas de hardware?}
+\subsection*{Respuesta}
+Sí, cada arquitectura de procesador tiene su propio lenguaje ensamblador, lo que refleja las instrucciones y capacidades específicas del procesador. Algunos desafíos de la optimización del código ensamblador incluyen:
+\begin{itemize}
+    \item \textbf{Portabilidad:} El código ensamblador no es portable entre diferentes arquitecturas, lo que significa que debe reescribirse o adaptarse significativamente para cada nuevo tipo de procesador.
+    \item \textbf{Complejidad:} Optimizar ensamblador requiere un conocimiento profundo del hardware específico, incluyendo el modelo de caché, pipeline y características del procesador.
+    \item \textbf{Mantenimiento:} El código ensamblador es más difícil de mantener y entender que los lenguajes de alto nivel, especialmente para programadores que no están familiarizados con la arquitectura subyacente.
+\end{itemize}
+
+\section*{6. ¿Cuáles son algunas de las ventajas y desventajas de usar el lenguaje ensamblador en comparación con los lenguajes de programación de nivel superior? ¿Cómo impactan estas ventajas/desventajas en el proceso de desarrollo, el rendimiento y la capacidad de mantenimiento del software?}
+\subsection*{Respuesta}
+\textbf{Ventajas:}
+\begin{itemize}
+    \item \textbf{Control detallado:} El ensamblador permite un control muy detallado sobre el hardware, lo que puede resultar en un software altamente optimizado y eficiente.
+    \item \textbf{Eficiencia:} Para tareas críticas, el código ensamblador puede ser más rápido y más eficiente en términos de uso de recursos.
+\end{itemize}
+\textbf{Desventajas:}
+\begin{itemize}
+    \item \textbf{Complejidad:} Es más complejo de escribir y entender, lo que puede llevar a un mayor tiempo de desarrollo y a la introducción de errores.
+    \item \textbf{Portabilidad y mantenimiento:} El código no es portable y es difícil de mantener, especialmente en proyectos grandes o que deben funcionar en múltiples plataformas de hardware.
+\end{itemize}
+Estas características impactan directamente en el proceso de desarrollo, donde el tiempo y los recursos necesarios pueden ser mayores, pero pueden justificarse por un rendimiento superior en aplicaciones críticas. La capacidad de mantenimiento puede ser problemática, especialmente en sistemas grandes o en evolución.
+
+\end{document}
