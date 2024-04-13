@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+
+\title{Tarea 03}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+    \item Preguntas
+    \begin{enumerate}
+        \item Demuestra que $x \cdot (y \cdot z) = (x \cdot y) \cdot z$
+        \begin{proof}
+            En álgebra booleana, la multiplicación es asociativa, por lo que:
+            \begin{align*}
+                x \cdot (y \cdot z) &= (x \cdot y) \cdot z
+            \end{align*}
+        \end{proof}
+        \item Demuestra si la siguiente igualdad es válida $x(\overline{x} + y) = xy$
+        \begin{proof}
+            Utilizando la ley del complemento y la ley distributiva, tenemos:
+            \begin{align*}
+                x(\overline{x} + y) &= x\overline{x} + xy \\
+                            &= 0 + xy \\
+                            &= xy
+            \end{align*}
+        \end{proof}
+        \item Demuestra si la siguiente igualdad es válida $(x + y)(\overline{x} + z)(y + z) = (x + y)(\overline{x} + z)$
+        \begin{proof}
+            Expandido y simplificando la expresión $(x + y)(\overline{x} + z)(y + z)$, tenemos:
+            \begin{align*}
+                (x + y)(\overline{x} + z)(y + z) &= (x\overline{x} + xz + y\overline{x} + yz)(y + z) \\
+                                                &= (0 + xz + y\overline{x} + yz)(y + z) \\
+                                                &= (xz + y\overline{x} + yz)(y + z) \\
+                                                &= xz y + xz z + y\overline{x}y + y\overline{x}z + yz y + yz z \\
+                                                &= 0 + xz + 0 + y\overline{x}z + yz + yz \\
+                                                &= xz + y\overline{x}z + yz \\
+                                                &= xz + yz \quad \text{(ya que $y\overline{x}z$ es absorbido por $yz$)}
+            \end{align*}
+            Por otro lado, $(x + y)(\overline{x} + z)$ se expande como:
+            \begin{align*}
+                (x + y)(\overline{x} + z) &= x\overline{x} + xz + y\overline{x} + yz \\
+                                          &= 0 + xz + y\overline{x} + yz \\
+                                          &= xz + yz
+            \end{align*}
+            Por lo tanto, $(x + y)(\overline{x} + z)(y + z) = (x + y)(\overline{x} + z)$ es una igualdad válida.
+        \end{proof}
+      \item Demuestra si la siguiente igualdad es válida $\overline{x \cdot y} = \overline{x} + \overline{y}$
+        \begin{proof}
+            Según las leyes de De Morgan en álgebra booleana, la negación de una conjunción (AND) es equivalente a la disyunción (OR) de las negaciones. Es decir, negar todo el producto \(x \cdot y\) es lo mismo que negar cada variable por separado y luego tomar la disyunción de las negaciones. La demostración es la siguiente:
+            \begin{align*}
+                \overline{x \cdot y} &= \overline{x} + \overline{y}
+            \end{align*}
+            Por lo tanto, la igualdad es válida y representa una de las leyes de De Morgan.
+        \end{proof}
+
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
