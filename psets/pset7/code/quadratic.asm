@@ -1,84 +1,147 @@
 .data
-prompt_a: .asciiz "Ingrese a: "
-prompt_b: .asciiz "Ingrese b: "
-prompt_c: .asciiz "Ingrese c: "
-message_no_real: .asciiz "La ecuacion no tiene soluciones reales.\n"
-message_x1: .asciiz "x1 = "
-message_x2: .asciiz "x2 = "
+ line_jump:	.asciiz "\n"
+ not_quad_equation_error: .asciiz "La ecuación no es cuadrática\n"
+ imaginary_roots_error: .asciiz "La ecuación tiene raíces imaginarias\n"
+ a: .asciiz "Escribe a="
+ ve: .asciiz "Escribe b="
+ c: .asciiz "Escribe c="
+ x1: .asciiz "x1 = "
+ x2: .asciiz "x2 = "
 
 .text
-.globl main
-
 main:
-    # Input a
-    li $v0, 4
-    la $a0, prompt_a
-    syscall
-    li $v0, 6
-    syscall
-    mov.s $f0, $f0   # a -> $f0
 
-    # Input b
-    li $v0, 4
-    la $a0, prompt_b
-    syscall
-    li $v0, 6
-    syscall
-    mov.s $f1, $f0   # b -> $f1
+ la $a0, line_jump # Imprimir salto de línea
+ syscall
 
-    # Input c
-    li $v0, 4
-    la $a0, prompt_c
-    syscall
-    li $v0, 6
-    syscall
-    mov.s $f2, $f0   # c -> $f2
+ la $a0, a # Solicitar el coeficiente a
+ syscall
 
-    # Calculating discriminant b^2 - 4ac
-    mul.s $f3, $f1, $f1  # b^2 -> $f3
-    li.s $f4, 4.0
-    mul.s $f5, $f0, $f2  # ac -> $f5
-    mul.s $f5, $f4, $f5  # 4ac -> $f5
-    sub.s $f6, $f3, $f5  # b^2 - 4ac -> $f6 (discriminante)
+ li $v0, 6 # Leer número flotante
+ syscall
 
-    # Check if discriminant is negative
-    li.s $f7, 0.0
-    c.lt.s $f6, $f7
-    bc1t no_real_solutions
+ li.s $f4, 0.0
+ c.eq.s $f0, $f4 # Comprueba si a = 0
+ bc1t not_quad_equation # Si a = 0, no es una ecuación cuadrática
 
-    # Calculating roots
-    sqrt.s $f8, $f6       # sqrt(discriminante) -> $f8
-    neg.s $f9, $f1        # -b -> $f9
-    add.s $f10, $f9, $f8  # -b + sqrt(discriminante) -> $f10
-    sub.s $f11, $f9, $f8  # -b - sqrt(discriminante) -> $f11
-    li.s $f12, 2.0
-    mul.s $f12, $f12, $f0 # 2a -> $f12
-    div.s $f13, $f10, $f12  # x1 -> $f13
-    div.s $f14, $f11, $f12  # x2 -> $f14
+ mov.s $f20, $f0 # Guarda a en $f20
 
-    # Print x1
-    li $v0, 4
-    la $a0, message_x1
-    syscall
-    li $v0, 2
-    mov.s $f12, $f13
-    syscall
+ la $a0, ve # Solicitar el coeficiente b
+ li $v0, 4
+ syscall
 
-    # Print x2
-    li $v0, 4
-    la $a0, message_x2
-    syscall
-    li $v0, 2
-    mov.s $f12, $f14
-    syscall
+ li $v0, 6 # Leer número flotante
+ syscall
 
-    j exit
+ mov.s $f21, $f0 # Guarda b en $f21
 
-no_real_solutions:
-    li $v0, 4
-    la $a0, message_no_real
-    syscall
+ la $a0, c # Solicitar el coeficiente c
+ li $v0, 4
+ syscall
 
-exit:
-    li $v0, 10
-    syscall
+ li $v0, 6 # Leer número flotante
+ syscall
+
+ mov.s $f22, $f0 # Guarda c en $f22
+
+ la $a0, line_jump # Imprimir salto de línea
+ li $v0, 4
+ syscall
+
+ mul.s $f7, $f21, $f21 # Calcula b^2
+ mul.s $f8, $f20, $f22 # Calcula ac
+ li.s $f9, 4.0
+ mul.s $f8, $f9, $f8 # Calcula 4ac
+ sub.s $f7, $f7, $f8 # Calcula b^2 - 4ac
+
+ li.s $f8, 0.0
+ c.lt.s $f7, $f8 # Comprueba si el discriminante es negativo
+ bc1t imaginary_roots # Si es negativo, las raíces son imaginarias
+
+ mov.s $f12, $f7
+ jal bsqrt_implementation # Calcula la raíz cuadrada de b^2 - 4ac
+
+ neg.s $f5, $f21 # f5 = -b
+ add.s $f6, $f5, $f0 # f6 = -b + sqrt(discriminante)
+ sub.s $f7, $f5, $f0 # f7 = -b - sqrt(discriminante)
+
+ li.s $f8, 2.0
+ mul.s $f4, $f20, $f8 # f4 = 2a
+ div.s $f8, $f6, $f4 # f8 = raíz x1
+ div.s $f9, $f7, $f4 # f9 = raíz x2
+
+ la $a0, x1 # Imprime "x1 = "
+ syscall
+
+ mov.s $f12, $f8 # Imprime x1
+ li $v0, 2
+ syscall
+
+ la $a0, line_jump # Imprime salto de línea
+ li $v0, 4
+ syscall
+
+ la $a0, x2 # Imprime "x2 = "
+ syscall
+
+ mov.s $f12, $f9 # Imprime x2
+ li $v0, 2
+ syscall
+
+ li $v0, 10 # Termina el programa
+ syscall
+
+imaginary_roots:
+ la $a0, imaginary_roots_error # Imprime mensaje de raíces imaginarias
+ syscall
+
+ li $v0, 10 # Termina el programa
+ syscall
+
+not_quad_equation:
+ la $a0, line_jump # Imprime salto de línea
+ li $v0, 4
+ syscall
+
+ la $a0, not_quad_equation_error # Imprime mensaje de no cuadrática
+ syscall
+
+ li $v0, 10 # Termina el programa
+ syscall
+
+
+.text
+bsqrt_implementation:
+    li.s    $f4, 0.0
+    c.eq.s  $f12, $f4         # Comprueba si la entrada x es igual a 0
+    bc1t    zero              # Si es verdadero, salta a 'zero' donde se configura sqrt(x) = 0
+    c.lt.s  $f12, $f4         # Comprueba si la entrada x es negativa
+    bc1t    error             # Si es verdadero, salta a 'error' donde se maneja el error
+
+    li.s    $f13, 2.0         # Divisor para la primera estimación
+    div.s   $f14, $f12, $f13  # estimación inicial = x / 2
+
+loop:
+    div.s   $f6, $f12, $f14   # r = x / estimación actual
+    add.s   $f5, $f14, $f6    # f5 = estimación actual + r
+    div.s   $f7, $f5, $f13    # nueva estimación = (estimación actual + r) / 2
+    sub.s   $f8, $f7, $f14    # Calcula el cambio para verificar la convergencia
+    abs.s   $f8, $f8          # Toma el valor absoluto del cambio
+    li.s    $f9, 0.0001       # Umbral de convergencia
+    c.lt.s  $f8, $f9          # Comprueba si el cambio es menor que el umbral
+    bc1t    done              # Si ha convergido, salir del bucle
+    mov.s   $f14, $f7         # Actualiza la estimación
+    b       loop
+    nop
+
+zero:
+    mov.s   $f0, $f4          # Devuelve directamente 0 como sqrt(0)
+    jr      $ra
+
+error:
+    li.s    $f0, -1.0         # Devuelve -1 como condición de error
+    jr      $ra
+
+done:
+    mov.s   $f0, $f14         # Establece la última estimación como el resultado
+    jr      $ra

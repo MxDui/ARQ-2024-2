@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Respuestas a las Preguntas de la Práctica}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{¿Cuáles son las limitaciones de los números flotantes en la computación? ¿Qué se ha hecho para lidiar con esas limitaciones y con el error matemático que introduce?}
+\subsection{Respuesta}
+Los números flotantes tienen varias limitaciones en la computación, principalmente relacionadas con su precisión y la forma en que se representan en la memoria. Las limitaciones incluyen:
+\begin{itemize}
+    \item \textbf{Precisión Limitada:} Los números flotantes son representados usando un número fijo de bits, lo que limita la cantidad de precisión que pueden tener. Esto puede llevar a errores de redondeo y precisión, especialmente en cálculos que involucran números muy pequeños o muy grandes.
+    \item \textbf{Problemas de Estabilidad Numérica:} Algoritmos que involucran operaciones repetitivas sobre números flotantes pueden acumular errores de redondeo, lo que afecta la estabilidad del algoritmo.
+    \item \textbf{Representación y Rango:} Los números extremadamente grandes o pequeños no se pueden representar exactamente debido a los límites en los bits de exponente y mantisa.
+\end{itemize}
+
+Para mitigar estas limitaciones, se han desarrollado varias estrategias:
+\begin{itemize}
+    \item \textbf{Aumento de la Precisión:} Uso de tipos de datos de doble precisión o precisión extendida para proporcionar más bits para la mantisa y el exponente, permitiendo una representación más precisa.
+    \item \textbf{Algoritmos de Suma Compensada:} Métodos como la suma de Kahan compensan los errores de redondeo acumulados durante las sumas iterativas.
+    \item \textbf{Análisis de Error y Diseño de Algoritmo:} Diseño consciente de algoritmos que minimizan la acumulación de errores de punto flotante.
+\end{itemize}
+
+\section{En el ejercicio 1: ¿A qué valor tiende la serie?}
+\subsection{Respuesta}
+La serie dada en el ejercicio 1 es una representación de la serie de Leibniz para $\pi$, que es una suma infinita de fracciones que convergen al valor de $\pi/4$. Matemáticamente, se expresa como:
+\[
+\sum_{n=0}^\infty \frac{(-1)^n}{2n+1} = \frac{\pi}{4}
+\]
+Por lo tanto, al multiplicar el resultado de esta serie por 4, se obtiene el valor de $\pi$. La serie converge muy lentamente, lo que significa que se necesitan muchos términos para obtener una aproximación precisa de $\pi$.
+
+\section{¿A cuántos dígitos estará limitado nuestro resultado con precisión sencilla? (Flotante) Justifica tu respuesta.}
+\subsection{Respuesta}
+En la precisión sencilla (32 bits) de punto flotante, el número de dígitos significativos que se pueden representar con precisión está generalmente limitado a unos 7 dígitos decimales. Esto se debe a que la mantisa de un número de punto flotante de 32 bits tiene 23 bits, que determinan la precisión del número. Sin embargo, debido a la manera en que se almacenan los números (utilizando notación científica binaria), la precisión efectiva en términos decimales es de aproximadamente 7 dígitos.
+
+\section{¿Cuántas iteraciones son necesarias para calcular el mayor número de dígitos?}
+\subsection{Respuesta}
+El número de iteraciones necesarias para alcanzar la precisión máxima en punto flotante de precisión sencilla dependerá de cómo se acumulen los errores en la serie y de las características específicas del algoritmo de sumatoria. Para una aproximación razonable de $\pi$ con precisión sencilla, podrían ser necesarias miles o incluso millones de iteraciones, debido a la convergencia muy lenta de la serie de Leibniz. Sin embargo, la precisión no mejorará significativamente más allá de los 7 dígitos decimales debido a las limitaciones del formato de punto flotante de precisión sencilla.
+
+\end{document}
