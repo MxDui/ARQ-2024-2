@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+\section{Preguntas}
+
+\subsection{¿Cuál es la diferencia entre las instrucciones jal y jr?}
+\textbf{Respuesta:} La instrucción \texttt{jal} (Jump And Link) se utiliza en MIPS para llamar a subrutinas. Cuando se ejecuta, \texttt{jal} salta a la dirección especificada, guardando al mismo tiempo la dirección de retorno en el registro \texttt{\$ra} (Registro de Retorno). Esto permite que la subrutina regrese a la instrucción siguiente después de la llamada a \texttt{jal}. Por otro lado, \texttt{jr} (Jump Register) se usa para regresar de la subrutina, saltando a la dirección contenida en un registro, típicamente \texttt{\$ra}. Esto concluye la ejecución de la subrutina, regresando el control al punto originalmente interrumpido por \texttt{jal}.
+
+\subsection{¿Qué utilidad tiene el registro \$ra? ¿Se puede prescindir de él? Y, ¿Qué utilidad tiene el registro \$fp? ¿Se puede prescindir de él?}
+\textbf{Respuesta:} El registro \texttt{\$ra} (Registro de Retorno) es crucial en la arquitectura MIPS para las llamadas a subrutinas, ya que guarda la dirección de retorno después de una llamada con \texttt{jal}. No es recomendable prescindir de él en contextos estándar, pues su uso automatiza y segura el retorno correcto a la rutina llamadora. El registro \texttt{\$fp} (Frame Pointer) apunta al marco actual en la pila, facilitando la gestión de variables locales y el rastreo de la pila a través de llamadas de función. Aunque es posible gestionar la pila solo con \texttt{\$sp} (Stack Pointer), el uso de \texttt{\$fp} puede simplificar significativamente la escritura y depuración de programas complejos.
+
+\subsection{En el contexto de las subrutinas, ¿Qué es el Wheeler Jump? Describe qué pasos y para qué sirve el Wheeler Jump.}
+\textbf{Respuesta:} El Wheeler Jump, aunque no es un término comúnmente reconocido en la programación en ensamblador MIPS, podría referirse a una técnica avanzada o específica de manejo de llamadas y retornos en subrutinas. Sin una definición estándar en el contexto de MIPS, se recomienda revisar la literatura específica mencionada en la práctica para una explicación detallada o verificar si se refiere a un concepto avanzado de optimización o control de flujo.
+
+\subsection{¿Cómo es que estas convenciones aseguran que la subrutina invocada (callee) no sobreescriba los registros de la rutina invocadora (caller)?}
+\textbf{Respuesta:} Las convenciones de llamada en MIPS incluyen el uso estratégico de registros guardados y temporales. Los registros guardados (\texttt{\$s0-\$s7}) deben ser salvados por la subrutina si se modifican, asegurando que su estado original se preserve para la rutina invocadora (caller). Los registros temporales (\texttt{\$t0-\$t9}) no necesitan ser preservados, y su uso es libre dentro de la subrutina. Este manejo asegura que los valores importantes no se pierdan o sobreescriban durante las llamadas a subrutinas.
+
+\subsection{Definimos como subrutina nodo a una subrutina que realiza una o más invocaciones a otras subrutinas y como subrutina hoja a una subrutina que no realiza llamadas a otras subrutinas. ¿Cuál es el tamaño mínimo que puede tener un marco para una subrutina nodo? ¿Bajo qué condiciones ocurre? ¿Cuál es el tamaño mínimo que puede tener un marco para una subrutina hoja? ¿Bajo qué condiciones ocurre?}
+\textbf{Respuesta:} Para una subrutina nodo, el tamaño mínimo del marco incluiría espacio para los registros de argumentos, registros guardados, la dirección de retorno, el apuntador al marco anterior, y potencialmente variables locales, dependiendo de las subrutinas que invoca. En una subrutina hoja, el marco puede ser más pequeño ya que no necesita espacio para guardar la dirección de retorno de otras llamadas, pero aún necesita gestionar registros guardados y locales si los modifica. El tamaño mínimo depende de cuántos de estos elementos son necesarios y utilizados efectivamente en la subrutina.
+
+\end{document}
