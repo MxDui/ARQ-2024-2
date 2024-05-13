@@ -4,6 +4,7 @@ prompt: .asciiz "Enter command: "
 error_msg: .asciiz "Unknown command. Try again.\n"
 exit_msg: .asciiz "Exiting the interpreter.\n"
 help_msg: .asciiz "Available commands: help, joke, song, rev, cat, exit\n"
+help_full: .asciiz "help: Prints information about available commands and their options. If called without arguments, it prints a list of available commands.\nSynopsis: help [arg]\nArguments: arg - Prints the description and options of the command 'arg'.\n"
 help_joke: .asciiz "joke: Displays a random joke.\n"
 help_song: .asciiz "song: Plays a short song with at least 10 notes.\n"
 help_rev: .asciiz "rev [file]: Prints the reverse of a string. If no file is specified, it uses standard input.\n"
@@ -133,7 +134,97 @@ not_cat:
     j handle_exit
 
 handle_help:
+    # Check if there is an argument after 'help'
+    la $t1, input_buffer + 5  # Assume command is at the beginning, skip "help "
+    lb $t2, 0($t1)
+    beqz $t2, print_help_msg  # If no argument, print general help message
+
+    # Parse the argument for specific command help
+    lb $t2, 0($t1)
+    li $t3, 'j'
+    bne $t2, $t3, not_help_joke
+    lb $t2, 1($t1)
+    li $t3, 'o'
+    bne $t2, $t3, not_help_joke
+    lb $t2, 2($t1)
+    li $t3, 'k'
+    bne $t2, $t3, not_help_joke
+    lb $t2, 3($t1)
+    li $t3, 'e'
+    bne $t2, $t3, not_help_joke
+    j print_help_joke
+
+not_help_joke:
+    lb $t2, 0($t1)
+    li $t3, 's'
+    bne $t2, $t3, not_help_song
+    lb $t2, 1($t1)
+    li $t3, 'o'
+    bne $t2, $t3, not_help_song
+    lb $t2, 2($t1)
+    li $t3, 'n'
+    bne $t2, $t3, not_help_song
+    lb $t2, 3($t1)
+    li $t3, 'g'
+    bne $t2, $t3, not_help_song
+    j print_help_song
+
+not_help_song:
+    lb $t2, 0($t1)
+    li $t3, 'r'
+    bne $t2, $t3, not_help_rev
+    lb $t2, 1($t1)
+    li $t3, 'e'
+    bne $t2, $t3, not_help_rev
+    lb $t2, 2($t1)
+    li $t3, 'v'
+    bne $t2, $t3, not_help_rev
+    j print_help_rev
+
+not_help_rev:
+    lb $t2, 0($t1)
+    li $t3, 'c'
+    bne $t2, $t3, not_help_cat
+    lb $t2, 1($t1)
+    li $t3, 'a'
+    bne $t2, $t3, not_help_cat
+    lb $t2, 2($t1)
+    li $t3, 't'
+    bne $t2, $t3, not_help_cat
+    j print_help_cat
+
+not_help_cat:
+    j print_help_msg
+
+print_help_msg:
+    la $a0, help_full
+    li $v0, 4
+    syscall
     la $a0, help_msg
+    li $v0, 4
+    syscall
+    j print_prompt
+
+print_help_joke:
+    la $a0, help_joke
+    li $v0, 4
+    syscall
+    j print_prompt
+
+print_help_song:
+    la $a0, help_song
+    li $v0, 4
+    syscall
+    j print_prompt
+
+print_help_rev:
+    la $a0, help_rev
+    li $v0, 4
+    syscall
+    j print_prompt
+
+print_help_cat:
+    la $a0, help_cat
     li $v0, 4
     syscall
     j print_prompt
@@ -141,31 +232,34 @@ handle_help:
 handle_joke:
     la $t0, counter
     lw $t1, 0($t0)        # Load the value of the counter
-    addi $t1, $t1, 1      # Increment the counter
+    addi $t1, 1           # Increment the counter
     sw $t1, 0($t0)        # Store it back
 
     li $t2, 3
-    div $t1, $t2          # Divide the counter by 3
-    mfhi $a0              # Use the remainder as an index
+    rem $a0, $t1, $t2     # Calculate the remainder of the counter divided by 3
 
     # Based on remainder, jump to print different jokes
-    bnez $a0, check_joke2
-    la $a0, joke1
-    j display_joke
-
-check_joke2:
+    beqz $a0, print_joke1
     li $t3, 1
     beq $a0, $t3, print_joke2
-    la $a0, joke3
+    j print_joke3
+
+print_joke1:
+    la $a0, joke1
     j display_joke
 
 print_joke2:
     la $a0, joke2
+    j display_joke
+
+print_joke3:
+    la $a0, joke3
 
 display_joke:
     li $v0, 4
     syscall
     j print_prompt
+
 handle_song:
     la $t0, frequencies  # Load address of the frequencies array
     li $t1, 10           # Set counter for 10 notes
@@ -177,12 +271,15 @@ play_note:
     li $v0, 33           # Syscall number for playing sound
     syscall              # Play the note
 
+    la $a0, song_note    # Display "Playing a note..."
+    li $v0, 4            # Syscall number for print string
+    syscall
+
     addiu $t0, $t0, 4    # Move to the next frequency in the array
     addi $t1, $t1, -1    # Decrement the counter
     bgtz $t1, play_note  # Continue playing if there are more notes
 
     j print_prompt       # Return to prompt after playing the song
-
 
 handle_rev:
     la $a0, input_buffer + 4  # Assume command is at the beginning, skip "rev "
@@ -278,6 +375,7 @@ close_file2:
     syscall
 
     j print_prompt             # Return to main prompt
+
 handle_error:
     la $a0, error_msg
     li $v0, 4
@@ -290,4 +388,3 @@ handle_exit:
     syscall
     li $v0, 10
     syscall
-
